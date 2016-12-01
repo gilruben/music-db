@@ -16,7 +16,7 @@ const Album = sequelizeConnection.define('album', {
   }
 })
 
-Album.hasOne(Artist)
+Album.belongsTo(Artist)
 Album.belongsToMany(Song, {through: 'Song_Album'});
 Song.belongsTo(Album, {through: 'Song_Song'});
 

@@ -7,7 +7,7 @@ Album.sync({force: true})
 .then(() => sequelizeConnection.sync())
 
 //add the following three artists to the database:
-.then(() => Album.create({name: 'A Seat at the Table'}))
+.then(() => Album.create({name: 'A Seat at the Table', artistId: 4}))
 .then((album)=>{
   album.addSongs([4, 5, 6, 7, 8])
 })

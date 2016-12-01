@@ -20,5 +20,5 @@ app.listen('9999', () => console.log('Listening on port 9999'));
 app.use('/api/albums', routes.albums)
 app.use('/api/artists', routes.artists)
 app.use('/api/genres', routes.genres)
-app.use('/api/playlist', routes.playlist)
+app.use('/api/playlists', routes.playlists)
 app.use('/api/songs', routes.songs)
