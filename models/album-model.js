@@ -8,7 +8,7 @@ const Song = require('./song-model')
 //////////
 
 const Album = sequelizeConnection.define('album', {
-  name: {
+  albumName: {
     type: Sequelize.STRING,
     validate: {
       len: [1,100]
