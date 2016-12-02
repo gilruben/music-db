@@ -7,7 +7,7 @@ const Genre = require('./genre-model');
 // YOUR CODE HERE:
 //////////
 
-const Song = sequelizeConnection.define('Song', {
+const Song = sequelizeConnection.define('song', {
   title: {
     type: Sequelize.STRING,
     validate: {

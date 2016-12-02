@@ -1,11 +1,16 @@
 const router = require('express').Router();
 const Song = require('../models/song-model');
+const Artist = require('../models/artist-model');
+const Genre = require('../models/genre-model');
 
 const getSongs = (req, res) => {
-  res.send('getting songs')
+  Song.findAll()
+    .then((songs) => {
+      res.send(songs);
+    })
 }
 
 router.route('/')
   .get(getSongs);
 
-module.export = router;
+module.exports = router;

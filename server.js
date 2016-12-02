@@ -4,7 +4,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
 const sequelizeConnection = require('./db');
-const songsRouter = require('./routes/song-router');
+const routes = require('./index').routes
+
 
 //body-parser middleware adds .body property to req (if we make a POST AJAX request with some data attached, that data will be accessible as req.body)
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,8 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 sequelizeConnection.authenticate()
 .then(() => {
   console.log('Sequelize connection successful');
-
-  app.use('/api/songs', songsRouter);
+  //console.log(routes);
+  //app.use('/api/albums', routes.albums)
+  //app.use('/api/artists', routes.artists)
+  //app.use('/api/genres', routes.genres)
+  //app.use('/api/playlist', routes.playlists)
+  app.use('/api/songs', routes.songs)
 
   //listen on port 8888
   app.listen('9999', () => console.log('Listening on port 9999'));
