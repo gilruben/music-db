@@ -6,4 +6,8 @@ const getAllArtists = () => (
   }
 )
 
-export default {GET_ALL_ARTISTS, getAllArtists}
+const getArtistsAysnc = () => {
+
+}
+
+export default {GET_ALL_ARTISTS, getArtistsAysnc}

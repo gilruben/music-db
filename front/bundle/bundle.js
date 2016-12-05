@@ -27946,13 +27946,17 @@
 	
 	var _redux = __webpack_require__(246);
 	
+	var _reduxThunk = __webpack_require__(260);
+	
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+	
 	var _reducer = __webpack_require__(258);
 	
 	var _reducer2 = _interopRequireDefault(_reducer);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var store = (0, _redux.createStore)(_reducer2.default);
+	var store = (0, _redux.createStore)(_reducer2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
 	
 	exports.default = store;
 
@@ -27966,16 +27970,16 @@
 	  value: true
 	});
 	
-	var _actions = __webpack_require__(259);
+	var _artistActions = __webpack_require__(261);
 	
-	var initialState = { playlist: {} };
+	var initialState = { playlist: [] };
 	
 	var reducer = function reducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
 	
 	  switch (action.type) {
-	    case _actions.GET_ALL_ARTISTS:
+	    case _artistActions.GET_ALL_ARTISTS:
 	      console.log('Getting all posts');
 	      break;
 	    default:
@@ -27986,7 +27990,36 @@
 	exports.default = reducer;
 
 /***/ },
-/* 259 */
+/* 259 */,
+/* 260 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	function createThunkMiddleware(extraArgument) {
+	  return function (_ref) {
+	    var dispatch = _ref.dispatch;
+	    var getState = _ref.getState;
+	    return function (next) {
+	      return function (action) {
+	        if (typeof action === 'function') {
+	          return action(dispatch, getState, extraArgument);
+	        }
+	
+	        return next(action);
+	      };
+	    };
+	  };
+	}
+	
+	var thunk = createThunkMiddleware();
+	thunk.withExtraArgument = createThunkMiddleware;
+	
+	exports['default'] = thunk;
+
+/***/ },
+/* 261 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28002,7 +28035,9 @@
 	  };
 	};
 	
-	exports.default = { GET_ALL_ARTISTS: GET_ALL_ARTISTS, getAllArtists: getAllArtists };
+	var getArtistsAysnc = function getArtistsAysnc() {};
+	
+	exports.default = { GET_ALL_ARTISTS: GET_ALL_ARTISTS, getArtistsAysnc: getArtistsAysnc };
 
 /***/ }
 /******/ ]);
