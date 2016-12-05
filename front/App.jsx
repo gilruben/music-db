@@ -9,7 +9,7 @@ const App = (props) => (
   <Provider store={store}>
     <Router history={browserHistory} >
       <Route path="/" component={Nav}>
-
+        
       </Route>
     </Router>
   </Provider>
