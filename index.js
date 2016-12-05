@@ -6,7 +6,7 @@ const Playlist = require('./models/playlist-model');
 const Song = require('./models/song-model');
 
 // Require routes
-const albums = require('./routes/album-router.js');
+const albums = require('./routes/album-router.js')
 const artists = require('./routes/artist-router.js');
 const genres = require('./routes/genre-router.js');
 const playlists = require('./routes/playlist-router.js');
@@ -20,7 +20,7 @@ module.exports = {
     Playlist: Playlist,
     Song: Song,
   },
-  routes: { 
+  routes: {
     albums: albums,
     artists: artists,
     genres: genres,

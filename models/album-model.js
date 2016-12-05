@@ -3,9 +3,6 @@ const sequelizeConnection = require('../db');
 const Artist = require('./artist-model')
 const Song = require('./song-model')
 
-//////////
-// YOUR CODE HERE:
-//////////
 
 const Album = sequelizeConnection.define('album', {
   albumName: {
