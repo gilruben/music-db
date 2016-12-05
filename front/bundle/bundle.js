@@ -73,12 +73,32 @@
 	
 	var _Nav2 = _interopRequireDefault(_Nav);
 	
-	var _ArtistContainer = __webpack_require__(263);
+	var _ArtistContainer = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./containers/ArtistContainer\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	
 	var _ArtistContainer2 = _interopRequireDefault(_ArtistContainer);
 	
+	var _SongsContainer = __webpack_require__(264);
+	
+	var _SongsContainer2 = _interopRequireDefault(_SongsContainer);
+	
+	var _PlaylistsContainer = __webpack_require__(265);
+	
+	var _PlaylistsContainer2 = _interopRequireDefault(_PlaylistsContainer);
+	
+	var _CreatePlaylistContainer = __webpack_require__(266);
+	
+	var _CreatePlaylistContainer2 = _interopRequireDefault(_CreatePlaylistContainer);
+	
+	var _NewSongContainer = __webpack_require__(267);
+	
+	var _NewSongContainer2 = _interopRequireDefault(_NewSongContainer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	//redux
+	
+	
+	//components
 	var App = function App(props) {
 	  return _react2.default.createElement(
 	    _reactRedux.Provider,
@@ -89,7 +109,11 @@
 	      _react2.default.createElement(
 	        _reactRouter.Route,
 	        { path: '/', component: _Nav2.default },
-	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _ArtistContainer2.default })
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _ArtistContainer2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/songs', component: _SongsContainer2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/playlists', component: _PlaylistsContainer2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/create-playlist', component: _CreatePlaylistContainer2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/new-song', component: _NewSongContainer2.default })
 	      )
 	    )
 	  );
@@ -27186,13 +27210,44 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
+	var _reactRouter = __webpack_require__(179);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Nav = function Nav(props) {
 	  return _react2.default.createElement(
-	    'h1',
+	    'div',
 	    null,
-	    'Hello'
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { className: 'nav', to: '/' },
+	      'Music API'
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { className: 'nav', to: '/artists' },
+	      'Artist'
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { className: 'nav', to: '/songs' },
+	      'Songs'
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { className: 'nav', to: '/playlists' },
+	      'Playlists'
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { className: 'nav', to: '/create-playlist' },
+	      'Create Playlist'
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { className: 'nav', to: '/new-song' },
+	      'New Song'
+	    )
 	  );
 	};
 	
@@ -28049,10 +28104,85 @@
 
 /***/ },
 /* 262 */,
-/* 263 */
-/***/ function(module, exports) {
+/* 263 */,
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(234);
+	
+	var SongsContainer = function SongsContainer(props) {};
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SongsContainer);
 
+/***/ },
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(234);
+	
+	var PlaylistContainer = function PlaylistContainer(props) {};
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PlaylistContainer);
+
+/***/ },
+/* 266 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(234);
+	
+	var CreatePlaylistContainer = function CreatePlaylistContainer(props) {};
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(CreatePlaylistContainer);
+
+/***/ },
+/* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(234);
+	
+	var NewSongContainer = function NewSongContainer(props) {};
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(NewSongContainer);
 
 /***/ }
 /******/ ]);
