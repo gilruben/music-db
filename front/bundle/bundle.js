@@ -73,6 +73,10 @@
 	
 	var _Nav2 = _interopRequireDefault(_Nav);
 	
+	var _ArtistContainer = __webpack_require__(263);
+	
+	var _ArtistContainer2 = _interopRequireDefault(_ArtistContainer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var App = function App(props) {
@@ -82,7 +86,11 @@
 	    _react2.default.createElement(
 	      _reactRouter.Router,
 	      { history: _reactRouter.browserHistory },
-	      _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Nav2.default })
+	      _react2.default.createElement(
+	        _reactRouter.Route,
+	        { path: '/', component: _Nav2.default },
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _ArtistContainer2.default })
+	      )
 	    )
 	  );
 	};
@@ -28038,6 +28046,13 @@
 	var getArtistsAysnc = function getArtistsAysnc() {};
 	
 	exports.default = { GET_ALL_ARTISTS: GET_ALL_ARTISTS, getArtistsAysnc: getArtistsAysnc };
+
+/***/ },
+/* 262 */,
+/* 263 */
+/***/ function(module, exports) {
+
+
 
 /***/ }
 /******/ ]);
