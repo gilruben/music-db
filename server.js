@@ -19,8 +19,8 @@ sequelizeConnection.authenticate()
   //app.use('/api/artists', routes.artists)
   //app.use('/api/genres', routes.genres)
   //app.use('/api/playlist', routes.playlists)
-  app.use('/api/songs', routes.songs)
-
+  app.use('/api/songs', routes.songs);
+  app.use('/api/playlists', routes.playlists);
   //listen on port 8888
   app.listen('9999', () => console.log('Listening on port 9999'));
 })
