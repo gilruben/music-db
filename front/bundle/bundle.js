@@ -65,16 +65,39 @@
 	
 	var _reactRedux = __webpack_require__(234);
 	
-	var _store = __webpack_require__(257);
+	var _store = __webpack_require__(256);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _Nav = __webpack_require__(245);
+	var _Nav = __webpack_require__(260);
 	
 	var _Nav2 = _interopRequireDefault(_Nav);
 	
+	var _ArtistsContainer = __webpack_require__(261);
+	
+	var _ArtistsContainer2 = _interopRequireDefault(_ArtistsContainer);
+	
+	var _SongsContainer = __webpack_require__(262);
+	
+	var _SongsContainer2 = _interopRequireDefault(_SongsContainer);
+	
+	var _PlaylistsContainer = __webpack_require__(263);
+	
+	var _PlaylistsContainer2 = _interopRequireDefault(_PlaylistsContainer);
+	
+	var _CreatePlaylistContainer = __webpack_require__(264);
+	
+	var _CreatePlaylistContainer2 = _interopRequireDefault(_CreatePlaylistContainer);
+	
+	var _NewSongContainer = __webpack_require__(265);
+	
+	var _NewSongContainer2 = _interopRequireDefault(_NewSongContainer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	//redux
+	
+	//components
 	var App = function App(props) {
 	  return _react2.default.createElement(
 	    _reactRedux.Provider,
@@ -82,7 +105,15 @@
 	    _react2.default.createElement(
 	      _reactRouter.Router,
 	      { history: _reactRouter.browserHistory },
-	      _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Nav2.default })
+	      _react2.default.createElement(
+	        _reactRouter.Route,
+	        { path: '/', component: _Nav2.default },
+	        _react2.default.createElement(_reactRouter.IndexRoute, { path: '/artists', component: _ArtistsContainer2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/songs', component: _SongsContainer2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/playlists', component: _PlaylistsContainer2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/create-playlist', component: _CreatePlaylistContainer2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/new-song', component: _NewSongContainer2.default })
+	      )
 	    )
 	  );
 	};
@@ -26583,7 +26614,7 @@
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _isPlainObject = __webpack_require__(241);
+	var _isPlainObject = __webpack_require__(243);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
@@ -26994,7 +27025,7 @@
 	exports.__esModule = true;
 	exports["default"] = wrapActionCreators;
 	
-	var _redux = __webpack_require__(246);
+	var _redux = __webpack_require__(241);
 	
 	function wrapActionCreators(actionCreators) {
 	  return function (dispatch) {
@@ -27006,220 +27037,32 @@
 /* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getPrototype = __webpack_require__(242),
-	    isHostObject = __webpack_require__(243),
-	    isObjectLike = __webpack_require__(244);
-	
-	/** `Object#toString` result references. */
-	var objectTag = '[object Object]';
-	
-	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
-	
-	/** Used to resolve the decompiled source of functions. */
-	var funcToString = Function.prototype.toString;
-	
-	/** Used to check objects for own properties. */
-	var hasOwnProperty = objectProto.hasOwnProperty;
-	
-	/** Used to infer the `Object` constructor. */
-	var objectCtorString = funcToString.call(Object);
-	
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
-	
-	/**
-	 * Checks if `value` is a plain object, that is, an object created by the
-	 * `Object` constructor or one with a `[[Prototype]]` of `null`.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.8.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a plain object,
-	 *  else `false`.
-	 * @example
-	 *
-	 * function Foo() {
-	 *   this.a = 1;
-	 * }
-	 *
-	 * _.isPlainObject(new Foo);
-	 * // => false
-	 *
-	 * _.isPlainObject([1, 2, 3]);
-	 * // => false
-	 *
-	 * _.isPlainObject({ 'x': 0, 'y': 0 });
-	 * // => true
-	 *
-	 * _.isPlainObject(Object.create(null));
-	 * // => true
-	 */
-	function isPlainObject(value) {
-	  if (!isObjectLike(value) ||
-	      objectToString.call(value) != objectTag || isHostObject(value)) {
-	    return false;
-	  }
-	  var proto = getPrototype(value);
-	  if (proto === null) {
-	    return true;
-	  }
-	  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-	  return (typeof Ctor == 'function' &&
-	    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
-	}
-	
-	module.exports = isPlainObject;
-
-
-/***/ },
-/* 242 */
-/***/ function(module, exports) {
-
-	/* Built-in method references for those with the same name as other `lodash` methods. */
-	var nativeGetPrototype = Object.getPrototypeOf;
-	
-	/**
-	 * Gets the `[[Prototype]]` of `value`.
-	 *
-	 * @private
-	 * @param {*} value The value to query.
-	 * @returns {null|Object} Returns the `[[Prototype]]`.
-	 */
-	function getPrototype(value) {
-	  return nativeGetPrototype(Object(value));
-	}
-	
-	module.exports = getPrototype;
-
-
-/***/ },
-/* 243 */
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is a host object in IE < 9.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
-	 */
-	function isHostObject(value) {
-	  // Many host objects are `Object` objects that can coerce to strings
-	  // despite having improperly defined `toString` methods.
-	  var result = false;
-	  if (value != null && typeof value.toString != 'function') {
-	    try {
-	      result = !!(value + '');
-	    } catch (e) {}
-	  }
-	  return result;
-	}
-	
-	module.exports = isHostObject;
-
-
-/***/ },
-/* 244 */
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is object-like. A value is object-like if it's not `null`
-	 * and has a `typeof` result of "object".
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
-	 * @example
-	 *
-	 * _.isObjectLike({});
-	 * // => true
-	 *
-	 * _.isObjectLike([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObjectLike(_.noop);
-	 * // => false
-	 *
-	 * _.isObjectLike(null);
-	 * // => false
-	 */
-	function isObjectLike(value) {
-	  return !!value && typeof value == 'object';
-	}
-	
-	module.exports = isObjectLike;
-
-
-/***/ },
-/* 245 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(33);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Nav = function Nav(props) {
-	  return _react2.default.createElement(
-	    'h1',
-	    null,
-	    'Hello'
-	  );
-	};
-	
-	exports.default = Nav;
-
-/***/ },
-/* 246 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 	
-	var _createStore = __webpack_require__(247);
+	var _createStore = __webpack_require__(242);
 	
 	var _createStore2 = _interopRequireDefault(_createStore);
 	
-	var _combineReducers = __webpack_require__(252);
+	var _combineReducers = __webpack_require__(251);
 	
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 	
-	var _bindActionCreators = __webpack_require__(254);
+	var _bindActionCreators = __webpack_require__(253);
 	
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 	
-	var _applyMiddleware = __webpack_require__(255);
+	var _applyMiddleware = __webpack_require__(254);
 	
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 	
-	var _compose = __webpack_require__(256);
+	var _compose = __webpack_require__(255);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
-	var _warning = __webpack_require__(253);
+	var _warning = __webpack_require__(252);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -27243,7 +27086,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 247 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27252,11 +27095,11 @@
 	exports.ActionTypes = undefined;
 	exports['default'] = createStore;
 	
-	var _isPlainObject = __webpack_require__(241);
+	var _isPlainObject = __webpack_require__(243);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _symbolObservable = __webpack_require__(248);
+	var _symbolObservable = __webpack_require__(247);
 	
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 	
@@ -27509,14 +27352,172 @@
 	}
 
 /***/ },
-/* 248 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(249);
+	var getPrototype = __webpack_require__(244),
+	    isHostObject = __webpack_require__(245),
+	    isObjectLike = __webpack_require__(246);
+	
+	/** `Object#toString` result references. */
+	var objectTag = '[object Object]';
+	
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+	
+	/** Used to resolve the decompiled source of functions. */
+	var funcToString = Function.prototype.toString;
+	
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+	
+	/** Used to infer the `Object` constructor. */
+	var objectCtorString = funcToString.call(Object);
+	
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objectToString = objectProto.toString;
+	
+	/**
+	 * Checks if `value` is a plain object, that is, an object created by the
+	 * `Object` constructor or one with a `[[Prototype]]` of `null`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 0.8.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a plain object,
+	 *  else `false`.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 * }
+	 *
+	 * _.isPlainObject(new Foo);
+	 * // => false
+	 *
+	 * _.isPlainObject([1, 2, 3]);
+	 * // => false
+	 *
+	 * _.isPlainObject({ 'x': 0, 'y': 0 });
+	 * // => true
+	 *
+	 * _.isPlainObject(Object.create(null));
+	 * // => true
+	 */
+	function isPlainObject(value) {
+	  if (!isObjectLike(value) ||
+	      objectToString.call(value) != objectTag || isHostObject(value)) {
+	    return false;
+	  }
+	  var proto = getPrototype(value);
+	  if (proto === null) {
+	    return true;
+	  }
+	  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
+	  return (typeof Ctor == 'function' &&
+	    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
+	}
+	
+	module.exports = isPlainObject;
 
 
 /***/ },
-/* 249 */
+/* 244 */
+/***/ function(module, exports) {
+
+	/* Built-in method references for those with the same name as other `lodash` methods. */
+	var nativeGetPrototype = Object.getPrototypeOf;
+	
+	/**
+	 * Gets the `[[Prototype]]` of `value`.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @returns {null|Object} Returns the `[[Prototype]]`.
+	 */
+	function getPrototype(value) {
+	  return nativeGetPrototype(Object(value));
+	}
+	
+	module.exports = getPrototype;
+
+
+/***/ },
+/* 245 */
+/***/ function(module, exports) {
+
+	/**
+	 * Checks if `value` is a host object in IE < 9.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+	 */
+	function isHostObject(value) {
+	  // Many host objects are `Object` objects that can coerce to strings
+	  // despite having improperly defined `toString` methods.
+	  var result = false;
+	  if (value != null && typeof value.toString != 'function') {
+	    try {
+	      result = !!(value + '');
+	    } catch (e) {}
+	  }
+	  return result;
+	}
+	
+	module.exports = isHostObject;
+
+
+/***/ },
+/* 246 */
+/***/ function(module, exports) {
+
+	/**
+	 * Checks if `value` is object-like. A value is object-like if it's not `null`
+	 * and has a `typeof` result of "object".
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 * @example
+	 *
+	 * _.isObjectLike({});
+	 * // => true
+	 *
+	 * _.isObjectLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObjectLike(_.noop);
+	 * // => false
+	 *
+	 * _.isObjectLike(null);
+	 * // => false
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+	
+	module.exports = isObjectLike;
+
+
+/***/ },
+/* 247 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(248);
+
+
+/***/ },
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';
@@ -27525,7 +27526,7 @@
 	  value: true
 	});
 	
-	var _ponyfill = __webpack_require__(251);
+	var _ponyfill = __webpack_require__(250);
 	
 	var _ponyfill2 = _interopRequireDefault(_ponyfill);
 	
@@ -27548,10 +27549,10 @@
 	
 	var result = (0, _ponyfill2['default'])(root);
 	exports['default'] = result;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(250)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(249)(module)))
 
 /***/ },
-/* 250 */
+/* 249 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -27567,7 +27568,7 @@
 
 
 /***/ },
-/* 251 */
+/* 250 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27595,7 +27596,7 @@
 	};
 
 /***/ },
-/* 252 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -27603,13 +27604,13 @@
 	exports.__esModule = true;
 	exports['default'] = combineReducers;
 	
-	var _createStore = __webpack_require__(247);
+	var _createStore = __webpack_require__(242);
 	
-	var _isPlainObject = __webpack_require__(241);
+	var _isPlainObject = __webpack_require__(243);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _warning = __webpack_require__(253);
+	var _warning = __webpack_require__(252);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -27743,7 +27744,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 253 */
+/* 252 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27773,7 +27774,7 @@
 	}
 
 /***/ },
-/* 254 */
+/* 253 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27829,7 +27830,7 @@
 	}
 
 /***/ },
-/* 255 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27840,7 +27841,7 @@
 	
 	exports['default'] = applyMiddleware;
 	
-	var _compose = __webpack_require__(256);
+	var _compose = __webpack_require__(255);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
@@ -27892,7 +27893,7 @@
 	}
 
 /***/ },
-/* 256 */
+/* 255 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -27935,7 +27936,7 @@
 	}
 
 /***/ },
-/* 257 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27944,9 +27945,9 @@
 	  value: true
 	});
 	
-	var _redux = __webpack_require__(246);
+	var _redux = __webpack_require__(241);
 	
-	var _reduxThunk = __webpack_require__(260);
+	var _reduxThunk = __webpack_require__(257);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
@@ -27961,37 +27962,7 @@
 	exports.default = store;
 
 /***/ },
-/* 258 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _artistActions = __webpack_require__(261);
-	
-	var initialState = { playlist: [] };
-	
-	var reducer = function reducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	  var action = arguments[1];
-	
-	  switch (action.type) {
-	    case _artistActions.GET_ALL_ARTISTS:
-	      console.log('Getting all posts');
-	      break;
-	    default:
-	      return state;
-	  }
-	};
-	
-	exports.default = reducer;
-
-/***/ },
-/* 259 */,
-/* 260 */
+/* 257 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28019,7 +27990,36 @@
 	exports['default'] = thunk;
 
 /***/ },
-/* 261 */
+/* 258 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _artistActions = __webpack_require__(259);
+	
+	var initialState = { playlist: [] };
+	
+	var reducer = function reducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	  var action = arguments[1];
+	
+	  switch (action.type) {
+	    case _artistActions.GET_ALL_ARTISTS:
+	      console.log('Getting all posts');
+	      break;
+	    default:
+	      return state;
+	  }
+	};
+	
+	exports.default = reducer;
+
+/***/ },
+/* 259 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28038,6 +28038,167 @@
 	var getArtistsAysnc = function getArtistsAysnc() {};
 	
 	exports.default = { GET_ALL_ARTISTS: GET_ALL_ARTISTS, getArtistsAysnc: getArtistsAysnc };
+
+/***/ },
+/* 260 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(33);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _reactRouter = __webpack_require__(179);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Nav = function Nav(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { className: 'nav', to: '/' },
+	      'Music API'
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { className: 'nav', to: '/artists' },
+	      'Artist'
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { className: 'nav', to: '/songs' },
+	      'Songs'
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { className: 'nav', to: '/playlists' },
+	      'Playlists'
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { className: 'nav', to: '/create-playlist' },
+	      'Create Playlist'
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Link,
+	      { className: 'nav', to: '/new-song' },
+	      'New Song'
+	    )
+	  );
+	};
+	
+	exports.default = Nav;
+
+/***/ },
+/* 261 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(234);
+	
+	var ArtistsContainer = function ArtistsContainer(props) {};
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(ArtistsContainer);
+
+/***/ },
+/* 262 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(234);
+	
+	var SongsContainer = function SongsContainer(props) {};
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(SongsContainer);
+
+/***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(234);
+	
+	var PlaylistContainer = function PlaylistContainer(props) {};
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PlaylistContainer);
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(234);
+	
+	var CreatePlaylistContainer = function CreatePlaylistContainer(props) {};
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(CreatePlaylistContainer);
+
+/***/ },
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _reactRedux = __webpack_require__(234);
+	
+	var NewSongContainer = function NewSongContainer(props) {};
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(NewSongContainer);
 
 /***/ }
 /******/ ]);
