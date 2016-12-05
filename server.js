@@ -15,11 +15,10 @@ app.use(express.static(path.join(__dirname, '/front/bundle')))
 sequelizeConnection.authenticate()
 .then(() => {
   console.log('Sequelize connection successful');
-  //console.log(routes);
-  //app.use('/api/albums', routes.albums)
-  //app.use('/api/artists', routes.artists)
-  //app.use('/api/genres', routes.genres)
-  //app.use('/api/playlist', routes.playlists)
+
+  app.use('/api/albums', routes.albums)
+  app.use('/api/artists', routes.artists)
+  app.use('/api/genres', routes.genres)
   app.use('/api/songs', routes.songs);
   app.use('/api/playlists', routes.playlists);
 
@@ -32,8 +31,3 @@ sequelizeConnection.authenticate()
   app.listen('9999', () => console.log('Listening on port 9999'));
 })
 .catch((err) => console.log('Unable to connect to the database:', err));
-
-
-//////////
-// YOUR CODE HERE:
-//////////
