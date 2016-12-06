@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'React';
 
-const Artist = React.createClass({
+const Playlist = React.createClass({
   getInitialState(){
     return {id: this.props.id}
   },
@@ -9,4 +9,4 @@ const Artist = React.createClass({
   }
 })
 
-export default Artist;
+export default Playlist;
