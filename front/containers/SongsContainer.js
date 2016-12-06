@@ -1,9 +1,10 @@
 import {connect} from 'react-redux'
-import {showVideo} from '../actions/song-actions'
+import {bindActionCreators} from 'redux'
+import * as actions from '../actions/song-actions'
 import SongsPage from '../components/SongsPage' 
 
 const mapDispatchToProps = (dispatch) => ({
-  showVideo: (arg) => dispatch(showVideo(arg))
+  actions: bindActionCreators(actions, dispatch)
 })
 
 const mapStateToProps = (state) => ({

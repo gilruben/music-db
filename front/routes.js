@@ -12,7 +12,9 @@ import NewSongContainer from './containers/NewSongContainer'
 //redux
 import store from './store/store'
 import {getSongsAysnc} from './actions/song-actions'
+import {getGenresAysnc} from './actions/genre-actions'
 const getSongs = () => {store.dispatch(getSongsAysnc())}
+const getGenres = () =>{store.dispatch(getGenresAysnc())}
 
 export default (
   <Route path="/" component={Nav}>
@@ -20,6 +22,6 @@ export default (
     <Route path="songs" onEnter={getSongs} component={SongsContainer}  />
     <Route path="playlists" component={PlaylistsContainer} />
     <Route path="create-playlist" component={CreatePlaylistContainer} />
-    <Route path="new-song" component={NewSongContainer} />  
+    <Route path="new-song" onEnter={getGenres} component={NewSongContainer} />  
   </Route> 
 );

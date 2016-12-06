@@ -7,3 +7,21 @@
   h2{
   }
 }
+
+.videoModal-enter {
+  top: 100px;
+}
+
+.videoModal-enter.videoModal-enter-active {
+  top: 500px;
+  transition: top 500ms ease-in;
+}
+
+.videoModal-leave {
+  top: 500px;
+}
+
+.videoModal-leave.videoModal-leave-active {
+  top: 100px;
+  transition: top 300ms ease-in;
+}
