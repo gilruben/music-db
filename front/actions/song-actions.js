@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import {GET_ALL_SONGS} from './types'
+import {GET_ALL_SONGS, SHOW_VIDEO} from './types'
 
 export const getAllSongs = (songs) => (
   {
@@ -18,3 +18,10 @@ export const getSongsAysnc = () => (dispatch) =>{
     dispatch(getAllSongs(songs));
   })
 }
+
+export const showVideo = (isVideo) => (
+  {
+    type: SHOW_VIDEO,
+    isVideo
+  }
+)

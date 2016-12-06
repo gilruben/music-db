@@ -1,8 +1,15 @@
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import * as actions from '../actions/song-actions'
 import SongsPage from '../components/SongsPage' 
 
-const mapStateToProps = (state) => ({
-  songs: state.songReducer.songs
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(actions, dispatch)
 })
 
-export default connect(mapStateToProps)(SongsPage)
+const mapStateToProps = (state) => ({
+  songs: state.songReducer.songs, 
+  isVideo: state.songReducer.isVideo
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SongsPage)

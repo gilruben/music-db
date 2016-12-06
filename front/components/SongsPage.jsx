@@ -1,12 +1,13 @@
 import React from 'react'
+import DisplaySong from './DisplaySong'
 
-const SongsPage = props => {
-  console.log(props.songs)
+const SongsPage = (props) => {
+  console.log(props)
   return (
-      <div>
+    <div>
       {
         props.songs ? props.songs.map((song, index) =>(
-          <li key={index}>{song.title}</li>  
+          <DisplaySong key={index} song={song} showVideo={props.actions.showVideo} isVideo={props.isVideo}/>
         )): null
       }
     </div>
@@ -14,3 +15,4 @@ const SongsPage = props => {
 }
 
 export default SongsPage
+
