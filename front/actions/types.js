@@ -1,0 +1,1 @@
+export const GET_ALL_SONGS = 'get_all_songs'
