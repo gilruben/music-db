@@ -1,13 +1,21 @@
-const GET_ALL_ARTISTS = 'GET_ALL_ARTISTS';
+import $ from 'jquery';
 
-const getAllArtists = () => (
+export const GET_ARTISTS = 'GET_ARTISTS';
+
+export const getArtists = (data) => (
   {
-    type: GET_ALL_ARTISTS
+    type: GET_ARTISTS,
+    payload: data
   }
 )
 
-const getArtistsAysnc = () => {
-
+export const getArtistsAsync = () => (dispatch) => {
+  $.ajax({
+    url: '/api/artists',
+    type: 'GET'
+  }).done((data) => {
+    dispatch(getArtists(data));
+  })
 }
 
-export default {GET_ALL_ARTISTS, getArtistsAysnc}
+//export default {GET_ARTISTS, getArtistsAsync}

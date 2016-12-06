@@ -1,12 +1,11 @@
-import {GET_ALL_ARTISTS} from '../actions/artist-actions';
+import {GET_ARTISTS} from '../actions/artist-actions';
 
-const initialState = {playlist: []};
+const initialState = {playlist: [], artists: []};
 
 const reducer = (state = initialState, action) => {
   switch(action.type){
-    case GET_ALL_ARTISTS:
-      console.log('Getting all posts');
-      break;
+    case GET_ARTISTS:
+      return Object.assign({}, state, {artists: action.payload})
     default:
       return state
   }
