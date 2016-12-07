@@ -11,33 +11,45 @@ const getSongs = (req, res) => {
 }
 
 const createSong = (req, res) => {
+  // let genres = JSON.parse(req.body.genres);
+  // var promises = genres.map(function(genre){
+  //   return Genre.findOrCreate({where: {title: genre}});
+  // });
+  // Promise.all(promises)
+  // .then( genres => genres.map(genre => genre[0].dataValues.id)
+  // )
+  // .then(genreIds => {})
+  let newSong;
 
   Artist.findOrCreate({where: {name: req.body.artist}})
-    .then((artist) => {
-      let songData = {};
-      songData.artistId = artist[0].id;
-      songData.title = req.body.title;
-      songData.youtube_url = req.body.youtube_url;
+  .then(artist => {
+    let songData = {};
+    songData.artistId = artist[0].id;
+    songData.title = req.body.title;
+    songData.youtube_url = req.body.youtube_url;
 
+    return Song.findOrCreate({where: songData})
+  })
+  .then(song => {
+    newSong = song
+  })
+  .then(() => {
+    let genres = JSON.parse(req.body.genres);
+    return genres.map(genre => Genre.findOrCreate({where: {title: genre}}));
+  })
+  .then(genres => Promise.all(genres))
+  .then( genres => genres.map(genre => genre[0].dataValues.id))
+  .then(genreIds =>{
+    console.log(genreIds)
+    newSong[0].addGenres(genreIds);
 
-      /*
-        find song if it exists and add its genres, else create the song and
-        its add genres
-      */
-      return Song.findOrCreate({where: songData});
-
-    })
-    .then((song) => {
-      let genres = JSON.parse(req.body.genres);
-      song[0].addGenres(genres);
-
-      console.log('Post successful');
-      res.status(200);
-    })
-    .catch((err) => {
-      console.log('Something went wrong');
-      res.status(500)
-    })
+    console.log('Post successful');
+    res.sendStatus(200);
+  })
+  .catch((err) => {
+    console.log('Something went wrong');
+    res.sendStatus(500)
+  })
 
 }
 
