@@ -1,11 +1,16 @@
 import {connect} from 'react-redux'
+import NewSongPage from '../components/NewSongPage'
 
-const NewSongContainer = props =>{
+import {bindActionCreators} from 'redux'
+import * as actions from '../actions/genre-actions'
 
-}
 
-const mapStateToProps = state => ({
-
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(actions, dispatch)
 })
 
-export default connect(mapStateToProps)(NewSongContainer)
+const mapStateToProps = state => ({
+  genres: state.genreReducer.genres
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewSongPage)
