@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import {GET_GENRES} from './types'
+import {GET_GENRES, GENRE_SEARCH, NEW_GENRES} from './types'
 
 export const getAllGenres = (genres) => (
   {
@@ -18,3 +18,17 @@ export const getGenresAysnc = () => (dispatch) =>{
     dispatch(getAllGenres(genres));
   })
 }
+
+export const genreSearchInput = (searchInput) => (
+  {
+    type: GENRE_SEARCH,
+    searchInput
+  }
+)
+
+export const makeNewGenre = (newGenres) => (
+  {
+    type: NEW_GENRES,
+    newGenres
+  }
+)

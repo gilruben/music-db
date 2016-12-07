@@ -2,7 +2,7 @@ import React from 'react'
 
 const DisplayVideo = props => {
   return (
-    <div>
+    <div className="youtube_video">
       <iframe id="ytplayer" type="text/html" width="640" height="360"
         src={`${props.youtube_url.replace('watch?v=', 'embed/')}?origin=http://localhost:9999.com`}>
       </iframe>

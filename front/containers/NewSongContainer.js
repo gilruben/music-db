@@ -10,7 +10,9 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const mapStateToProps = state => ({
-  genres: state.genreReducer.genres
+  genres: state.genreReducer.genres,
+  searchInput: state.genreReducer.searchInput,
+  newGenres: state.genreReducer.newGenres,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewSongPage)
