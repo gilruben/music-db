@@ -8,9 +8,6 @@ const SearchGenres = props => {
 
     //check for unique instances
     let genres = props.newGenres.filter((genre,index) => {
-      console.log("genre", genre)
-      console.log("index", index)
-      console.log(props.newGenres.indexOf(genre))
       if(props.newGenres.indexOf(genre) === index) return genre;
     })
     props.makeNewGenre(genres)
@@ -28,7 +25,7 @@ const SearchGenres = props => {
       <input 
         onChange={(event)=>props.genreSearchInput(event.target.value)}
       />
-      <button onClick={()=>createNewGenre(props.searchInput)}></button>
+      <button onClick={()=>createNewGenre(props.searchInput)}>Add Genre</button>
       {props.searchInput
         ? props.genres.map((genre, index) => {
           if (genre.title.indexOf(props.searchInput) > -1) return <li 
