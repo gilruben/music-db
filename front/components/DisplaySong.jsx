@@ -9,16 +9,18 @@ const DisplaySong = props => {
   let checkIfOpen = isVideoDisplayed ? false : props.song.id
   return (
     <article className="displaySong">
-      <h2>{props.song.title}</h2>
-      <h2>{props.song.artist.name}</h2>
-      <button onClick={()=>props.showVideo(checkIfOpen)}>
-        {isVideoDisplayed ? "Hide Video" : "Show Video"}
-      </button>
-      {
-        props.button ? 
-          <button onClick={addToPlaylist}>+</button>
-        : null
-      }
+      <div className="songInfo">
+        <h2>{props.song.title}</h2>
+        <h2>{props.song.artist.name}</h2>
+        <button onClick={()=>props.showVideo(checkIfOpen)}>
+          {isVideoDisplayed ? "Hide Video" : "Show Video"}
+        </button>
+        {
+          props.button ? 
+            <button onClick={addToPlaylist}>+</button>
+          : null
+        }
+      </div>
       <ReactCSSTransitionGroup
           transitionName="videoModal"
           transitionEnterTimeout={500}
