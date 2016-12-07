@@ -1,11 +1,8 @@
 import {connect} from 'react-redux'
+import SongsPage from '../components/SongsPage' 
 
-const SongsContainer = props =>{
-
-}
-
-const mapStateToProps = state => ({
-
+const mapStateToProps = (state) => ({
+  songs: state.songReducer.songs
 })
 
-export default connect(mapStateToProps)(SongsContainer)
+export default connect(mapStateToProps)(SongsPage)

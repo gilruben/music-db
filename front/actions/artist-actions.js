@@ -17,5 +17,3 @@ export const getArtistsAsync = () => (dispatch) => {
     dispatch(getArtists(data));
   })
 }
-
-//export default {GET_ARTISTS, getArtistsAsync}

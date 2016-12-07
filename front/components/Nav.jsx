@@ -12,6 +12,7 @@ const Nav = (props) => (
       <Link className="nav" to="/create-playlist">Create Playlist</Link>
       <Link className="nav" to="/new-song">New Song</Link>
     </div>
+
     {props.children}
   </div>
 )

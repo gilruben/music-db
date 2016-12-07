@@ -1,6 +1,6 @@
 import {GET_ARTISTS} from '../actions/artist-actions';
 
-const initialState = {playlists: [], artists: []};
+const initialState = {artists: []};
 
 const reducer = (state = initialState, action) => {
   switch(action.type){

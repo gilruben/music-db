@@ -4,7 +4,7 @@ import Artist from '../components/Artist'
 
 
 const ArtistsContainer = props => (
-  props.artists.length > 0 ?
+  props.artists ?
     <ul>
       {props.artists.map((artist, indx) => (
         <li key={indx}><Artist name={artist.name} id={artist.id} /></li>
@@ -13,7 +13,7 @@ const ArtistsContainer = props => (
 )
 
 const mapStateToProps = (state) => {
-  return {artists: state.artists}
+  return {artists: state.artistReducer.artists}
 }
 
 export default connect(mapStateToProps)(ArtistsContainer)
