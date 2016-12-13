@@ -16,7 +16,12 @@ const CreatePlaylistContainer = React.createClass({
       <div>
         <input type="text" placeholder="Playlist Name" onChange={this.handleChange}/>
 
-        
+        {
+          this.state.isCreate ?
+            <div>
+
+            </div>  : null;
+        }
         {songs.map((song, indx) => {
           return <SongItem key={indx} artist={song.artist.name} title={song.title} />
         })}
