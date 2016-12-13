@@ -4,7 +4,7 @@ import artistReducer from './artist-reducer';
 import songReducer from './song-reducer'
 import playlistReducer from './playlist-reducer';
 import playlistSongsReducer from './playlistsongs-reducer';
-import genreReducer from './genreReducer';
+import genreReducer from './genre-reducer';
 
 export const rootReducer = combineReducers({
   artistReducer,

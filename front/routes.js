@@ -21,7 +21,7 @@ export default (
     <Route path="songs" onEnter={getSongs} component={SongsContainer}  />
     <Route onEnter={getAllPlaylists} path="playlists" component={PlaylistsContainer} />
     <Route onEnter={getAllPlaylistSongs} path="playlists/:id" component={PlaylistSongsContainer} />
-    <Route path="create-playlist" component={CreatePlaylistContainer} />
+    <Route onEnter={getSongs} path="create-playlist" component={CreatePlaylistContainer} />
     <Route path="new-song" onEnter={getGenres} component={NewSongContainer} />
   </Route>
 );
